@@ -1,0 +1,113 @@
+<html>
+<head>
+    <link rel="stylesheet" href="style.css"> 
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.form/4.2.2/jquery.form.min.js" integrity="sha256-2Pjr1OlpZMY6qesJM68t2v39t+lMLvxwpa8QlRjJroA=" crossorigin="anonymous"></script>
+</head>
+<body>
+<form action="https://docs.google.com/forms/d/e/1FAIpQLSd3KvW9I6OXa2R8o8vMXb0MHo_UH_94rOHFvndHFBoSpnuXPw/formResponse"
+      target="_self"
+      id="bootstrapForm"
+      method="POST">
+    <fieldset>
+        <h2 class="form-title">Submit To 8BallTV!<br><small></small></h2>
+                <!-- <img class="topimg" src="tv_small_white.png" alt="8balltv logo"> -->
+        <div class="topblurb"> Thank you for submitting your work to 8BallTV! Use the form below to fill in your data.</div>
+    </fieldset>
+
+    <!-- Field type: "short" id: "469300513" -->
+    <fieldset>
+        <legend for="469300513">Your Name</legend>
+        <div class="form-group">
+            <input id="449827282" type="text" name="entry.449827282" class="form-control" >
+        </div>
+    </fieldset>
+
+
+    <!-- Field type: "short" id: "2073777716" -->
+    <fieldset>
+        <legend for="2073777716">Streaming Link (YouTube, Vimeo, etc)</legend>
+        <div class="form-group">
+            <input id="117983225" type="text" name="entry.117983225" class="form-control" >
+        </div>
+    </fieldset>
+
+    <!-- Field type: "short" id: "1072964102" -->
+    <fieldset>
+        <legend for="1072964102">Title Of Work</legend>
+        <div class="form-group">
+            <input id="1756070368" type="text" name="entry.1756070368" class="form-control" >
+        </div>
+    </fieldset>
+
+    <!-- Field type: "paragraph" id: "796114161" -->
+    <fieldset>
+        <legend for="796114161">Description of work</legend>
+        <div class="form-group">
+            <textarea id="191081578" name="entry.191081578" class="form-control" ></textarea>
+        </div>
+    </fieldset>
+
+
+    <!-- Field type: "short" id: "1476539114" -->
+    <fieldset>
+        <legend for="1476539114">Email Address</legend>
+        <div class="form-group">
+            <input id="2094353266" type="text" name="entry.2094353266" class="form-control" >
+        </div>
+    </fieldset>
+
+
+    <!-- Field type: "short" id: "1515897824" -->
+    <fieldset>
+        <legend for="1515897824">Phone Number</legend>
+        <div class="form-group">
+            <input id="1830193204" type="text" name="entry.1830193204" class="form-control" >
+        </div>
+    </fieldset>
+
+    <input type="hidden" name="fvv" value="1">
+    <input type="hidden" name="fbzx" value="1464692681879338627">
+    <input type="hidden" name="pageHistory" value="0">
+
+    <input class="btn btn-primary" type="submit" value="Submit">
+</form>
+
+<script>
+document.getElementById('bootstrapForm').addEventListener('submit', function(e) {
+    e.preventDefault(); // Prevent the default form submission
+    
+    // Show loading state
+    const submitBtn = document.querySelector('.btn');
+    submitBtn.disabled = true;
+    submitBtn.value = 'Submitting...';
+    
+    // Submit the form data via AJAX
+    fetch(this.action, {
+        method: 'POST',
+        body: new FormData(this),
+        mode: 'no-cors'
+    })
+    .then(() => {
+        // Show success message
+        document.getElementById('bootstrapForm').innerHTML = `
+            <div class="success-message">
+                <h2 class="form-title">Submission Successful!</h2>
+                <p>Thank you for your submission! If your submission was sucessful you will receive an email from us soon. Submissions are reviewed on a biweekly basis, please allow us time to review your submission. Thank you!</p>
+                <button onclick="window.location.reload()">Submit Another</button>
+            </div>
+        `;
+    })
+    .catch(error => {
+        // Show error message
+        alert('Error submitting form. Please try again or email 8balltelevision@gmail.com.');
+        submitBtn.disabled = false;
+        submitBtn.value = 'Submit';
+    });
+});
+</script>
+</body>
+
+
+</html>
